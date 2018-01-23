@@ -4,4 +4,5 @@
 @end
 
 @interface FLTProximityStreamHandler : NSObject<FlutterStreamHandler>
+
 @end

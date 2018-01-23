@@ -9,7 +9,7 @@ const EventChannel('plugins.flutter.io/proximity');
 
 class ProximityEvent {
   /// Proximity force along the x axis (including gravity) measured in m/s^2.
-  final double x;
+  final String x;
 
   ProximityEvent(this.x);
 
@@ -17,8 +17,8 @@ class ProximityEvent {
   String toString() => '[ProximityEvent (x: $x)]';
 }
 
-ProximityEvent _listToProximityEvent(List<double> list) {
-  return new ProximityEvent(list[0]);
+ProximityEvent _listToProximityEvent(String list) {
+  return new ProximityEvent(list);
 }
 
 Stream<ProximityEvent> _proximityEvents;
@@ -28,7 +28,7 @@ Stream<ProximityEvent> get proximityEvents {
   if (_proximityEvents == null) {
     _proximityEvents = _proximityEventChannel
         .receiveBroadcastStream()
-        .map(_listToProximityEvent);
+        .map((dynamic event) => _listToProximityEvent(event));
   }
   return _proximityEvents;
 }

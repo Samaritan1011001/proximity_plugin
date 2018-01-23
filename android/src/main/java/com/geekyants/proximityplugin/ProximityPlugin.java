@@ -69,11 +69,16 @@ public class ProximityPlugin implements EventChannel.StreamHandler {
 
       @Override
       public void onSensorChanged(SensorEvent event) {
-        double[] sensorValues = new double[event.values.length];
+        String sensorValue="" ;
         for (int i = 0; i < event.values.length; i++) {
-          sensorValues[i] = event.values[i];
+          if(event.values[i] == 0) {
+            sensorValue = "Yes";
+            break;
+          }else{
+            sensorValue = "No";
+          }
         }
-        events.success(sensorValues);
+        events.success(sensorValue);
       }
     };
   }

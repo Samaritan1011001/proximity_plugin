@@ -12,7 +12,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  List<double> _proximity ;
+  String _proximity ;
   List<StreamSubscription<dynamic>> _streamSubscriptions =
   <StreamSubscription<dynamic>>[];
   @override
@@ -26,7 +26,7 @@ class _MyAppState extends State<MyApp> {
     _streamSubscriptions
         .add(proximityEvents.listen((ProximityEvent event) {
       setState(() {
-        _proximity= <double>[event.x];
+        _proximity= event.x;
       });
     }));
   }
