@@ -2,13 +2,10 @@ import 'dart:async';
 
 import 'package:flutter/services.dart';
 
-
-
 const EventChannel _proximityEventChannel =
-const EventChannel('plugins.flutter.io/proximity');
+    const EventChannel('plugins.flutter.io/proximity');
 
 class ProximityEvent {
-  /// Proximity force along the x axis (including gravity) measured in m/s^2.
   final String x;
 
   ProximityEvent(this.x);
@@ -17,7 +14,7 @@ class ProximityEvent {
   String toString() => '[ProximityEvent (x: $x)]';
 }
 
-ProximityEvent _listToProximityEvent(String list) {
+_listToProximityEvent(String list) {
   return new ProximityEvent(list);
 }
 
